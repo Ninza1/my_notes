@@ -1,0 +1,61 @@
+CORS: cross origin resouse sharing.
+
+backend is runing on localhost and port : 4000
+
+react app frontend: localhost :3000
+
+cross origin: ==> diff origins
+--> front end
+--> backend
+
+cross : allow you to define which client or frontend should be albe to make request
+
+cros({orign: "https:localhost:3000}) //only localhost: 3000 can req 3001
+cros({origi: "*}) // any frontend can request you.
+
+--> register and login system
+--> user shcema and model
+---> while registering will be hashing the password 
+--> while logging we will be comparing the passowrd using bcrypt and creating a token with the help of jwt ;
+
+
+RBAC--> role based access control
+1. admin -CURD
+2. User read only
+3. 
+
+noteModel:
+title,
+description
+status,
+userID
+
+
+--> 3 kinds of relationships;
+1-1, 1-may, many-many;
+
+a user can create multiple notes ;
+user-1 
+notes- many(userID);
+
+1- many relationship;
+
+
+========================================
+
+Url of the backend 
+localhosts 3004
+=> frontend
+--> url of backed  to fetch noes: localhost:3005/notes  with the deployed backend url
+--> deploy frontend
+will my frontend be able to fetch the notes from the backend?(localhost);
+--> deploy backend: 
+-> platfroms: 
+-> railway
+-> cyclic
+-> render -> 
+
+
+
+
+
