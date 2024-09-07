@@ -1,49 +1,33 @@
-const express = require('express');
-const dotenv = require("dotenv").config();
-const userRouter = require("./routes/user.route");
-const noteRouter = require("./routes/note.route")
-const connection = require("./config/db")
-var cors = require('cors')
-const auth = require("./middleware/auth.middleware")
+import express from "express";
+import connection from "./config/db.js";
+import dotenv from "dotenv";
+import userRouter from "./route/user.route.js";
+import noteRouter from "./route/note.route.js";
+import auth from "./middleware/auth.middleware.js"
+import cors from "cors";
+dotenv.config();
 
-const PORT = process.env.PORT || 3000
 const app = express();
+const PORT = process.env.PORT || 3005;
+
+app.use(cors({
+    origin: '*'
+}))
+app.use(express.json());
+app.use("/user", userRouter);
+app.use("/note",auth, noteRouter);
 
 
-app.use(express.json())
-app.use("/user", userRouter)
-app.use("/note", auth, noteRouter)
-// app.use(cors({
-    app.use(cors());
-//     origin: "*"
-// }))
-app.use(cors());
+app.get("/", (req, res) => {
+    res.send("Server is running fine");
+});
 
-app.get("/", (req,res) =>{
-    try{
-        res.send("welcom to new curdk full stakc application")
-
-    }catch(err){
-        console.log(err)
-    }
-})
-
-app.get("/movies-data", (req,res) =>{
-   try{
-    res.send("movies_data...")
-   }catch(err){
-    console.log(err)
-   }
-})
-
-
-app.listen(PORT, async()=>{
-    try{
-        await connection;
-        console.log(`server is running on port ${PORT} AND db connected successfully`);
-
-    }catch(err){
-        console.log("connection server err", err)
+app.listen(PORT, async() => {
+    try {
+        await connection
+        console.log(`Server is running on port ${PORT} and db is also connected`);
+    } catch (error) {
+        console.log("Error in the server", error);
     }
 })
 

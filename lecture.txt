@@ -1,61 +1,66 @@
-CORS: cross origin resouse sharing.
+CORS : cross origin resource sharing.
 
-backend is runing on localhost and port : 4000
+backend is running on localhost and port : 4000
+// https:notes.app.com
 
-react app frontend: localhost :3000
+react app frontend: localhost:3000
 
-cross origin: ==> diff origins
---> front end
---> backend
+--> any frontend be able to request: --> client side request
+// https:notes.app.netlify.com
 
-cross : allow you to define which client or frontend should be albe to make request
 
-cros({orign: "https:localhost:3000}) //only localhost: 3000 can req 3001
-cros({origi: "*}) // any frontend can request you.
+cross origin --> different origin
+--> frontend 
+--> backend 
+
+--> Cors : allows you to define which client or frontend should be able to request you 
+
+cors({origin: 'https:notes.app.netlify.com'}) // only localhost:3000 can request 3001
+cors({origin: '*'}) // any frontend can request you
+
 
 --> register and login system
---> user shcema and model
----> while registering will be hashing the password 
---> while logging we will be comparing the passowrd using bcrypt and creating a token with the help of jwt ;
+--> user schema and model
+--> while registering will be  hashing the password with bcrypt
+--> while logging we will be comparing the password using bcrypt and creating a token with the help
+    of jwt
 
 
-RBAC--> role based access control
-1. admin -CURD
-2. User read only
-3. 
+
 
 noteModel:
-title,
+title
 description
-status,
-userID
+status
+userIDn==> id of UserModel (mongodb id of user)
+
+--> 3 kinds of relationships:
+1-1 , 1-many, many-many
 
 
---> 3 kinds of relationships;
-1-1, 1-may, many-many;
+a user can create multiple notes:
+user - 1
+notes - many (userID)
 
-a user can create multiple notes ;
-user-1 
-notes- many(userID);
+1- many relationship
 
-1- many relationship;
+=> model is done?
+=> route for it --> to access these routes the user should be authenticated
+==> to check the authentication ==> auth middleware
 
 
-========================================
 
-Url of the backend 
-localhosts 3004
-=> frontend
---> url of backed  to fetch noes: localhost:3005/notes  with the deployed backend url
---> deploy frontend
-will my frontend be able to fetch the notes from the backend?(localhost);
---> deploy backend: 
--> platfroms: 
--> railway
+==> Url of the backend:
+localhost: 3005
+
+==> frontend:
+--> url of backend to fetch notes: localhost:3005/notes  with the deployed backend url
+--> deploy frontend 
+will my frontend be able to fetch the notes from the backend? (localhost)
+
+--> can we directly deploy and use that in the frontend?
+--> deploy the backend :
+=> platforms:
+-> railway --> (evaluation) --> fast --> you can only deploy one backend --> reserve
 -> cyclic
--> render -> 
-
-
-
-
-
+-> render --> (use this)

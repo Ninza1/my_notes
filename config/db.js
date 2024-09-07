@@ -1,6 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+dotenv.config();
 
-const url = process.env.MONGO_URL
-const connection = mongoose.connect(url);
+const connection = mongoose.connect(process.env.MONGO_URL)
 
-module.exports = connection;
+export default connection;
