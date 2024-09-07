@@ -13,9 +13,11 @@ const app = express();
 app.use(express.json())
 app.use("/user", userRouter)
 app.use("/note", auth, noteRouter)
-app.use(cors({
-    origin: "*"
-}))
+// app.use(cors({
+    app.use(cors());
+//     origin: "*"
+// }))
+app.use(cors());
 
 app.get("/", (req,res) =>{
     try{
